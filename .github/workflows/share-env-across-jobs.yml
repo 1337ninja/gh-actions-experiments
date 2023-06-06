@@ -8,3 +8,15 @@ on:
         description: "Run workflow"
         type: boolean
 
+env:
+  GITHUB_RUNNER: ubuntu
+  GITHUB_RUNNER_VERSION: 22.04
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print ENV
+        run: echo ${{ env.GITHUB_RUNNER }}-${{ env.GITHUB_RUNNER_VERSION }}
+
+
