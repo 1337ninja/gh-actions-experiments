@@ -1,0 +1,10 @@
+
+name: Share env vars across jobs
+
+on:
+  workflow_dispatch:
+    inputs:
+      run-workflow:
+        description: "Run workflow"
+        type: boolean
+
