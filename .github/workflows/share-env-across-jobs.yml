@@ -13,6 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print ENV
-        run: echo ${{ env.GITHUB_RUNNER }}-${{ env.GITHUB_RUNNER_VERSION }}
+        run: echo job1-${{ env.GITHUB_RUNNER }}-${{ env.GITHUB_RUNNER_VERSION }}
+
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print ENV
+        run: echo job2-${{ env.GITHUB_RUNNER }}-${{ env.GITHUB_RUNNER_VERSION }}
 
 
