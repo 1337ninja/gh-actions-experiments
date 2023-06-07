@@ -16,6 +16,7 @@ jobs:
         run: echo job1-${{ env.GITHUB_RUNNER }}-${{ env.GITHUB_RUNNER_VERSION }}
 
   job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: Print ENV
