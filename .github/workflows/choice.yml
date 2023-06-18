@@ -31,9 +31,11 @@ jobs:
       - name: Set DEPLOY_BRANCH
         run: |
           if [[ ${{ inputs.environment }} == 'dev' ]]; then
-          echo "DEPLOY_BRANCH=topic-branch" >> $GITHUB_ENV
+            echo "DEPLOY_BRANCH=topic-branch" >> $GITHUB_ENV
           elif [[ ${{ inputs.environment }} == 'test' ]]; then
-          echo "DEPLOY_BRANCH=main" >> $GITHUB_ENV
+            echo "DEPLOY_BRANCH=main" >> $GITHUB_ENV
+          fi
+        shell: bash
       
       - name: Print DEPLOY_BRANCH 
         run: echo "Deploying from branch ${{ env.DEPLOY_BRANCH }}"
