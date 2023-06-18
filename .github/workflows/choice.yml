@@ -11,7 +11,7 @@ on:
         required: true
 
 jobs:
-  setup-build-env:
+  get-env-using-ga:
     runs-on:  ubuntu-latest
     steps:
       - name: is dev branch?
@@ -21,6 +21,19 @@ jobs:
       - name: is test branch?
         if: inputs.environment == 'test'
         run: echo "DEPLOY_BRANCH=main" >> $GITHUB_ENV
+      
+      - name: Print DEPLOY_BRANCH 
+        run: echo "Deploying from branch ${{ env.DEPLOY_BRANCH }}"
+
+  get-env-using-bash:
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Set DEPLOY_BRANCH
+        run: |
+          if [[ ${{ inputs.environment }} == 'dev' ]]; then
+          echo "DEPLOY_BRANCH=topic-branch" >> $GITHUB_ENV
+          elif [[ ${{ inputs.environment }} == 'test' ]]; then
+          echo "DEPLOY_BRANCH=main" >> $GITHUB_ENV
       
       - name: Print DEPLOY_BRANCH 
         run: echo "Deploying from branch ${{ env.DEPLOY_BRANCH }}"
