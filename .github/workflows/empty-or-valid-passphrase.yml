@@ -16,5 +16,5 @@ jobs:
             run: echo "Login with empty passphrase"
 
           - name: Is valid passphrase
-            if: !inputs.is-empty-passphrase
+            if: ${{ !inputs.is-empty-passphrase }}
             run: echo "Login with valid passphrase"
