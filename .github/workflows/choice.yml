@@ -16,11 +16,11 @@ jobs:
     steps:
       - name: is dev branch?
         if: inputs.environment == 'dev'
-        run: echo "DEPLOY_BRANCH=test" >> $GITHUB_ENV
+        run: echo "DEPLOY_BRANCH=topic-branch" >> $GITHUB_ENV
 
       - name: is test branch?
         if: inputs.environment == 'test'
-        run: echo "DEPLOY_BRANCH=test" >> $GITHUB_ENV
+        run: echo "DEPLOY_BRANCH=main" >> $GITHUB_ENV
       
       - name: Print DEPLOY_BRANCH 
         run: echo "Deploying from branch ${{ env.DEPLOY_BRANCH }}"
