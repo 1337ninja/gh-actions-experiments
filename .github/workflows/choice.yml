@@ -1,0 +1,25 @@
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        description: "Environment to deploy"
+        options:
+          - dev
+          - test
+        required: true
+
+jobs:
+  setup-build-env:
+    runs-on:  ubuntu-latest
+    steps:
+      - name: is dev branch?
+        if: inputs.environment == 'dev'
+        run: echo "DEPLOY_BRANCH=test" >> $GITHUB_ENV
+
+      - name: is test branch?
+        if: inputs.environment == 'test'
+        run: echo "DEPLOY_BRANCH=test" >> $GITHUB_ENV
+      
+      - name: Print DEPLOY_BRANCH 
+        run: echo "Deploying from branch $DEPLOY_BRANCH"
