@@ -1,3 +1,4 @@
+name: Empty or Valid passphrase
 on:
     workflow_dispatch:
       inputs:
