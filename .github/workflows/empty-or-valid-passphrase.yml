@@ -1,0 +1,19 @@
+on:
+    workflow_dispatch:
+      inputs:
+        is-empty-passphrase:
+          type: boolean
+          description: "Use empty passphrase"
+          default: true
+  
+jobs:
+    use-empty-or-valid-passphrase:
+        runs-on:  ubuntu-latest
+        steps:
+          - name: Is empty passphrase
+            if: inputs.is-empty-passphrase
+            run: echo "Login with empty passphrase"
+
+          - name: Is valid passphrase
+            if: !inputs.is-empty-passphrase
+            run: echo "Login with valid passphrase"
